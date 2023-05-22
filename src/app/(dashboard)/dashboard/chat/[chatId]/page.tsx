@@ -1,3 +1,5 @@
+import ChatInput from "@/components/ChatInput";
+import Messages from "@/components/Messages";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -26,6 +28,8 @@ async function getChatMessages(chatId: string) {
     const reversedDbMessages = dbMessages.reverse();
 
     const messages = messageArrayValidator.parse(reversedDbMessages);
+
+    return messages;
   } catch (error) {
     notFound();
   }
@@ -71,6 +75,8 @@ const page = async ({ params }: PageProps) => {
           </div>
         </div>
       </div>
+      <Messages initialMessages={initialMessages} sessionId={session.user.id} />
+      <ChatInput chatPartner={chatPartner} chatId={chatId} />
     </div>
   );
 };
