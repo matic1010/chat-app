@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
-const page = async ({}) => {
+const Page = async ({}) => {
   const session = await getServerSession(authOptions);
   if (!session) notFound();
 
@@ -27,7 +27,7 @@ const page = async ({}) => {
 
   return (
     <main className="pt-8">
-      <h1 className="font-bold text-5xl mb-8">Add a friend</h1>
+      <h1 className="font-bold text-5xl mb-8">Friend requests</h1>
       <div className="flex flex-col gap-4">
         <FriendRequests
           incomingFriendRequests={incomingFriendRequests}
@@ -38,4 +38,4 @@ const page = async ({}) => {
   );
 };
 
-export default page;
+export default Page;
