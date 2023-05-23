@@ -88,7 +88,7 @@ const Messages: FC<MessagesProps> = ({
                 </span>
               </div>
               <div
-                className={cn("relative w-6 h-6", {
+                className={cn("relative w-6 h-6 flex-shrink-0", {
                   "order-2": isCurrentUser,
                   "order-1": !isCurrentUser,
                   invisible: hasNextMessageFromSameUser,
